@@ -1,16 +1,31 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
-import Addtask from './Component/Addtask';
-import ListTask from './Component/ListTask';
-import Task from './Component/Task';
-function App() {
+import AddTask from './Components/AddTask';
+import ListTask from './Components/ListTask';
+
+const App =()=> {
+  const [tasks, setTasks] = useState([]);
+
+  const handleAddTask = (newTask) => {
+    setTasks([...tasks, newTask]);
+  };
+
+  // Implement toggle, delete, and edit logic
+
   return (
-    <div className="App">
-      <Addtask/>
-      <ListTask/>
-      <Task/>
+    <div>
+      <h1>Todo App</h1>
+      <AddTask onAdd={handleAddTask} />
+      <ListTask tasks={tasks} />
     </div>
   );
-}
+};
 
 export default App;
+
+
+
+
+
+
+
